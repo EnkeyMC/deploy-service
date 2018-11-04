@@ -27,7 +27,7 @@ def on_git_push():
 	if request.method == 'POST':
 		if request.headers.get('X-GitHub-Event') == 'push':
 			push_event = request.get_json(True)
-			if push_event.get('ref') == 'ref/heads/master':
+			if push_event.get('ref') == 'refs/heads/master':
 				print("Push to branch", push_event.get('ref'), "by", push_event['sender']['login'], ", updating.")
 				update()
 			else:
