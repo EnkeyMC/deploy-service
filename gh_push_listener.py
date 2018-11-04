@@ -3,6 +3,7 @@ from flask import request
 from flask_cors import CORS
 from subprocess import Popen
 import os
+import signal
 
 app = Flask(__name__)
 CORS(app)
@@ -12,13 +13,13 @@ proc = None
 def update():
 	global proc
 	if proc is not None:
-		proc.terminate()
+		os.killpg(os.getpgid(proc.pid), signal.SIGTERM)
 	cmd = ['make', 'update']
 	if 'PYTHON' in os.environ:
 		cmd.append('PYTHON='+os.environ)
 
 	with open('stdout.log', 'a') as out, open('stderr.log', 'a') as err:
-		proc = Popen(cmd, stdout=out, stderr=err)
+		proc = Popen(cmd, stdout=out, stderr=err, preexec_fn=os.setsid)
 
 update()
 
