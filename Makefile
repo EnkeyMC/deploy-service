@@ -1,8 +1,8 @@
 listen: venv
-	. venv/bin/activate; FLASK_APP=gh_push_listener.py flask run
+	. venv/bin/activate; FLASK_APP=gh_push_listener.py flask run --port=8002
 
 listen-pub: venv
-	. venv/bin/activate; FLASK_APP=gh_push_listener.py flask run --host=0.0.0.0 --port=80
+	. venv/bin/activate; FLASK_APP=gh_push_listener.py flask run --host=0.0.0.0 --port=8002
 
 venv: venv/bin/activate
 
