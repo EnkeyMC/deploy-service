@@ -35,3 +35,8 @@ def on_git_push():
 		return "Thanks"
 	else:
 		return "<h1>I am listening</h1>"
+
+@app.route("/update")
+def on_update():
+	update()
+	return "<h1>Updated</h1>"
