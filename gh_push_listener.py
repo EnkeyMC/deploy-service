@@ -8,5 +8,5 @@ CORS(app)
 @app.route("/", methods=['POST'])
 def on_git_push():
 	if request.headers.get('X-GitHub-Event') == 'push':
-		print(request.form['ref'])
+		push_event = request.get_json(True)
 	return "Thanks"
