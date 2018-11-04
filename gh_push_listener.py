@@ -15,7 +15,7 @@ def update():
 		proc.terminate()
 	cmd = ['make', 'update']
 	if 'PYTHON' in os.environ:
-		cmd.append('PYTHON='+os.environ)
+		cmd.append('PYTHON='+os.environ['PYTHON'])
 
 	with open('stdout.log', 'a') as out, open('stderr.log', 'a') as err:
 		proc = Popen(cmd, stdout=out, stderr=err)

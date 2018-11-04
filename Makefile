@@ -12,4 +12,11 @@ venv/bin/activate: requirements.txt
 	touch venv/bin/activate
 
 update:
-	echo "Pull project and start"
+	cd ../iis/ && \
+	git pull && \
+	cd backend/ && \
+	(test -d venv || $(PYTHON) -m venv venv) && \
+	. venv/bin/activate && \
+	pip3 install -Ur requirements.txt && \
+	python manage.py migrate && \
+	python manage.py runserver
