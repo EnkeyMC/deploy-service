@@ -9,4 +9,5 @@ CORS(app)
 def on_git_push():
 	if request.headers.get('X-GitHub-Event') == 'push':
 		push_event = request.get_json(True)
+		print(push_event)
 	return "Thanks"
