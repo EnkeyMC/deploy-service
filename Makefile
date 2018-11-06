@@ -19,4 +19,5 @@ update:
 	. venv/bin/activate && \
 	pip3 install -Ur requirements.txt && \
 	python manage.py migrate && \
+	python manage.py loaddata sample_data && \
 	python manage.py runserver 0.0.0.0:8000
