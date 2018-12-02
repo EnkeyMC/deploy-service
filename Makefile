@@ -14,6 +14,11 @@ venv/bin/activate: requirements.txt
 update:
 	cd ../iis/ && \
 	git pull && \
+	cd frontend/ && \
+	npm run build && \
+	cp -r build/static ../backend && \
+	cp build/index.html ../backend/templates/index.html && \
+	cd ../ && \
 	cd backend/ && \
 	(test -d venv || $(PYTHON) -m venv venv) && \
 	. venv/bin/activate && \
