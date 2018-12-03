@@ -15,6 +15,7 @@ update:
 	cd ../iis/ && \
 	git pull && \
 	cd frontend/ && \
+	npm install && \
 	npm run build && \
 	cp -r build/static ../backend && \
 	cp build/index.html ../backend/templates/index.html && \
